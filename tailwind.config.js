@@ -9,9 +9,7 @@ export default {
   content: ["./app/**/*.{js,pug}"],
   theme: {
     colors: colorStyles,
-    fontSize: {
-      ...fontSizes,
-    },
+    fontSize: fontSizes,
     screens: {
       xs: "480px",
       ...screens,

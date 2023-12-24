@@ -1,16 +1,19 @@
 import gulp from "gulp";
 import plumber from "gulp-plumber";
-import errorHandler from "gulp-plumber-error-handler";
 import rename from "gulp-rename";
 import svgSymbols from "gulp-svg-symbols";
 import imagemin, {svgo} from "gulp-imagemin";
+import {onError} from "gulp-notify";
 
 export default () => {
   return gulp
     .src("app/static/icons/**/*.svg")
     .pipe(
       plumber({
-        errorHandler: errorHandler("Error in icons task"),
+        errorHandler: onError({
+          title: "Error in icons task",
+          message: "Error: <%= error.message %>",
+        }),
       }),
     )
     .pipe(

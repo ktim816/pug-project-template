@@ -1,12 +1,19 @@
 import gulp from "gulp";
 import plumber from "gulp-plumber";
-import errorHandler from "gulp-plumber-error-handler";
 import changed from "gulp-changed";
+import {onError} from "gulp-notify";
 
 export default () => {
   return gulp
     .src("app/static/videos/**/*")
-    .pipe(plumber({errorHandler: errorHandler("Error in videos task")}))
+    .pipe(
+      plumber({
+        errorHandler: onError({
+          title: "Error in videos task",
+          message: "Error: <%= error.message %>",
+        }),
+      }),
+    )
     .pipe(changed("dist/assets/videos"))
     .pipe(gulp.dest("dist/assets/videos"));
 };
