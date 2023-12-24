@@ -1,0 +1,15 @@
+// Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Common
+@import "variables";
+@import "mixins";
+@import "fonts";
+@import "basics";
+
+// Blocks, Components, Pages
+@import "../blocks/**/*";
+@import "../components/**/*";
+@import "../pages/**/*";
