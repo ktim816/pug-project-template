@@ -1,15 +1,23 @@
-mixin image-jpg(src, alt)
+mixin image(src, alt, ext = 'jpg')
   - const image = `assets/images/${src}`
+  img(src=`${image}.${ext}`, alt=alt || '')&attributes(attributes)
 
+mixin image-dpr(src, alt, ext = 'jpg')
+  - const image = `assets/images/${src}`
+  +image(src, alt, ext)(srcset=`${image}.${ext}, ${image}@2x.${ext} 2x`)&attributes(attributes)
+
+mixin image-jpg(src, alt)
   +b.image&attributes(attributes)
-    img(srcset=`${image}.jpg, ${image}@2x.jpg 2x`, src=`${image}.jpg` alt=alt || '')
+    +image-dpr(src, alt, 'jpg')
 
 mixin image-png(src, alt)
-  - const image = `assets/images/${src}`
-
   +b.image&attributes(attributes)
-    img(srcset=`${image}.png, ${image}@2x.png 2x`, src=`${image}.png` alt=alt || '')
+    +image-dpr(src, alt, 'png')
 
-mixin image-svg(src, alt)
+mixin image-webp(src, alt)
   +b.image&attributes(attributes)
-    img(src=`assets/images/${src}.svg`, alt=alt || '')
+    +image-dpr(src, alt, 'webp')
+
+mixin image-svg(src, alt, style)
+  +b.image&attributes(attributes)
+    +image(src, alt, 'svg')

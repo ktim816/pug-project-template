@@ -18,20 +18,7 @@ export const images = () => {
       }),
     )
     .pipe(changed("dist/assets/images"))
-    .pipe(
-      imagemin(
-        [
-          svgo({
-            plugins: [
-              {
-                removeViewBox: false,
-              },
-            ],
-          }),
-        ],
-        {verbose: true},
-      ),
-    )
+    .pipe(imagemin([svgo()], {verbose: true}))
     .pipe(gulp.dest("dist/assets/images"));
 };
 

@@ -1,0 +1,9 @@
+mixin button(modal)
+  +b.BUTTON(data-modal=modal).button&attributes(attributes)
+    span
+      block
+
+mixin button-link(href, modal)
+  +b.A(href=href, data-modal=modal).button&attributes(attributes)
+    span
+      block

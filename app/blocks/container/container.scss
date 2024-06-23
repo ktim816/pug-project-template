@@ -1,5 +1,10 @@
-.container {
-  @apply max-w-[90rem] mx-auto px-10;
+.custom-container {
+  @apply w-full max-w-[1440px] mx-auto px-5;
+  @apply md:px-10;
 
   $this: &;
+
+  &--fluid {
+    @apply max-w-full;
+  }
 }

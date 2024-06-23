@@ -31,24 +31,18 @@
   }
 }
 
-@mixin center-block() {
-  @apply absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4;
+@mixin background-image-set($image, $ext: "webp") {
+  background-image: url("../../assets/images/#{$image}.#{$ext}");
+  @supports (background-image: image-set()) {
+    background-image: image-set(
+      url("../../assets/images/#{$image}.#{ext}") 1x,
+      url("../../assets/images/#{$image}@2x.#{ext}") 2x
+    );
+  }
 }
 
-@mixin center-block-vertical() {
-  @apply absolute top-2/4 transform -translate-y-2/4;
-}
-
-@mixin center-block-horizontal() {
-  @apply absolute left-2/4 transform -translate-x-2/4;
-}
-
-@mixin center-image {
-  @apply absolute inset-0 m-auto;
-}
-
-@mixin fill-img {
-  @apply absolute inset-0 size-full m-auto object-cover;
+@mixin fill-content {
+  @apply absolute top-0 left-0 size-full m-auto object-cover;
 }
 
 @mixin scrollbar-thin() {

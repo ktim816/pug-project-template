@@ -1,8 +1,8 @@
 import gulp from "gulp";
 import plumber from "gulp-plumber";
 import rename from "gulp-rename";
+import svgmin from "gulp-svgmin";
 import svgSymbols from "gulp-svg-symbols";
-import imagemin, {svgo} from "gulp-imagemin";
 import {onError} from "gulp-notify";
 
 export default () => {
@@ -25,22 +25,16 @@ export default () => {
       }),
     )
     .pipe(
-      imagemin([
-        svgo({
-          plugins: [
-            {optimizationLevel: 3},
-            {progessive: true},
-            {interlaced: true},
-            {removeViewBox: false},
-            {removeUselessStrokeAndFill: true},
-            {cleanupIDs: false},
-            {cleanupAttrs: true},
-            {removeMetadata: true},
-            {removeTitle: true},
-            {removeAttrs: {attrs: "(fill|stroke|data-name)"}},
-          ],
-        }),
-      ]),
+      svgmin({
+        multipass: true,
+        full: true,
+        plugins: [
+          "removeUselessStrokeAndFill",
+          "cleanupAttrs",
+          "removeMetadata",
+          "removeTitle",
+        ],
+      }),
     )
     .pipe(rename("icon.svg"))
     .pipe(gulp.dest("dist/assets/images/"));

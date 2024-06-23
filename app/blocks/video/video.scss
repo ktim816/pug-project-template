@@ -1,0 +1,7 @@
+.video {
+  $this: &;
+
+  video {
+    @apply block size-full object-cover;
+  }
+}

@@ -2,7 +2,6 @@
   $this: &;
 
   img {
-    display: block;
-    width: 100%;
+    @apply block max-w-full;
   }
 }

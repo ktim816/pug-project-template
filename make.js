@@ -1,12 +1,12 @@
-import program from "commander";
+import {program} from "commander";
 import fs from "fs";
 import path from "path";
 
-import block from "./templates/block";
-import component from "./templates/component";
-import page from "./templates/page";
-import scss from "./templates/scss";
-import js from "./templates/js";
+import block from "./templates/block.js";
+import component from "./templates/component.js";
+import page from "./templates/page.js";
+import scss from "./templates/scss.js";
+import js from "./templates/js.js";
 
 const sources = {
   block,

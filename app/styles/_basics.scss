@@ -1,11 +1,12 @@
 html,
 body {
-  @apply min-h-screen text-base overflow-x-hidden;
+  @apply min-h-screen font-primary overflow-x-hidden;
 }
 
 html {
   @apply antialiased scroll-smooth;
-  font-size: 100%;
+  font-size: 16px;
+  font-size-adjust: none;
   -webkit-text-size-adjust: 100%;
   font-variant-ligatures: none;
   -webkit-font-variant-ligatures: none;
@@ -16,4 +17,15 @@ html {
 a,
 span {
   @apply inline-block;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
 }

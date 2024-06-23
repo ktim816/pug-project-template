@@ -1,4 +1,4 @@
-module.exports = pageName => `
+export default pageName => `
 extends ../../layouts/default
 
 block content

@@ -1,0 +1,8 @@
+mixin inline-video(src, autoplay)
+  video(muted="", loop="", autoplay=autoplay, playsinline="")&attributes(attributes)
+    source(src=`assets/videos/${src}.webm`, type="video/webm")
+    source(src=`assets/videos/${src}.mp4`, type="video/mp4")
+
+mixin video(src, autoplay)
+  +b.video&attributes(attributes)
+    +inline-video(src, autoplay)

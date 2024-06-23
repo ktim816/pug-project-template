@@ -1,0 +1,46 @@
+.modal {
+  @apply relative invisible z-10 transition-[visibility];
+  $this: &;
+
+  &.is-active {
+    @apply visible;
+
+    #{$this}__overlay {
+      @apply opacity-100;
+    }
+
+    #{$this}__panel {
+      @apply opacity-100 scale-100;
+    }
+  }
+
+  &__overlay {
+    @apply fixed inset-0 bg-black/50 opacity-0 transition-opacity;
+  }
+
+  &__wrapper {
+    @apply fixed inset-0 overflow-y-auto pointer-events-none;
+  }
+
+  &__container {
+    @apply flex min-h-full items-center justify-center px-4 py-6 text-center;
+  }
+
+  &__panel {
+    @apply relative bg-white p-8 transition-[opacity,transform] opacity-0 scale-95 pointer-events-auto;
+  }
+
+  &__close {
+    @apply absolute top-0 -right-8 text-white transition-transform;
+    @apply md:-right-12;
+
+    &:hover {
+      @apply -rotate-90;
+    }
+
+    .icon {
+      @apply size-4;
+      @apply md:size-6;
+    }
+  }
+}

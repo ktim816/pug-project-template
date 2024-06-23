@@ -10,7 +10,8 @@ import bulkSass from "gulp-sass-bulk-import";
 import rename from "gulp-rename";
 import autoprefixer from "autoprefixer";
 import postcssImport from "postcss-import";
-import discardComents from "postcss-discard-comments";
+import postcssSortMediaQueries from "postcss-sort-media-queries";
+import discardComments from "postcss-discard-comments";
 import tailwindcss from "tailwindcss";
 import tailwindConfig from "../tailwind.config.js";
 import {onError} from "gulp-notify";
@@ -34,10 +35,13 @@ export default () => {
     .pipe(sass())
     .pipe(
       postcss([
-        tailwindcss(tailwindConfig),
-        autoprefixer({grid: "autoplace"}),
         postcssImport(),
-        discardComents(),
+        tailwindcss(tailwindConfig),
+        postcssSortMediaQueries({
+          sort: "mobile-first",
+        }),
+        autoprefixer(),
+        discardComments(),
         cssnano({
           preset: "default",
         }),

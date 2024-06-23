@@ -1,0 +1,10 @@
+mixin modal()
+  +b.modal(role="dialog").js-modal&attributes(attributes)
+    +e.overlay.js-modal-overlay
+    +e.wrapper
+      +e.container
+        +e.panel
+          +e.BUTTON(type="button").close.js-modal-close
+            +icon('close')
+          block
+

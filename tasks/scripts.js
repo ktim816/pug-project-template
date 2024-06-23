@@ -1,11 +1,6 @@
 import webpack from "webpack";
-import {onError} from "gulp-notify";
+import notify from "gulp-notify";
 import _webpackConfig from "../webpack.config.js";
-
-const scriptsErrorHandler = onError({
-  title: "Error in scripts task",
-  message: "Error: <%= message %>",
-});
 
 export default (watch = false) =>
   callback => {
@@ -16,8 +11,10 @@ export default (watch = false) =>
 
       if (jsonStats.errors.length) {
         jsonStats.errors.forEach(message => {
-          console.error(message);
-          scriptsErrorHandler(message);
+          notify({
+            message,
+            title: "Error in scripts task",
+          });
         });
       }
 

@@ -1,0 +1,41 @@
+$spinner-size: 12em;
+
+.button {
+  $this: &;
+
+  &.is-loading {
+    @apply cursor-not-allowed;
+
+    > span {
+      @apply invisible;
+    }
+
+    &::before {
+      content: "";
+      @apply block absolute border-solid rounded-full border-white/40;
+      font-size: 0.1075em;
+      width: $spinner-size;
+      height: $spinner-size;
+      top: calc(50% - $spinner-size / 2);
+      left: calc(50% - $spinner-size / 2);
+      text-indent: -9999em;
+      border-width: 2em;
+      border-left-color: #fff;
+      animation: load8 1.1s infinite linear;
+    }
+  }
+
+  span {
+    @apply relative z-10 pointer-events-none;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
